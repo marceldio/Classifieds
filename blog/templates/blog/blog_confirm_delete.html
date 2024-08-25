@@ -10,8 +10,8 @@
                             {% csrf_token %}
                         </div>
                         <p class="card-text">Delete this post? {{ object.title }}</p>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                        <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Cancel</a>
+                        <button type="submit" class="btn btn-outline-danger">Confirm</button>
+                        <a class="btn btn-outline-info" href="{% url 'blog:blog_list' %}" role="button">Cancel</a>
                     </div>
                 </form>
             </div>

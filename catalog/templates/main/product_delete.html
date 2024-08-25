@@ -10,8 +10,8 @@
                             {% csrf_token %}
                         </div>
                         <p class="card-text">Remove this ad? {{ object.product }}</p>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                        <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Cancel</a>
+                        <button type="submit" class="btn btn-outline-danger">Confirm</button>
+                        <a class="btn btn-outline-primary" href="{% url 'catalog:product_list' %}" role="button">Cancel</a>
                     </div>
                 </form>
             </div>
