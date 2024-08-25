@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>My Store</title>
+    <title>Classifieds</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
@@ -23,8 +23,11 @@
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
 
-
     <style>
+
+        .header {
+        z-index:1;
+        }
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -80,7 +83,6 @@
         .btn-bd-primary {
           --bd-violet-bg: #712cf9;
           --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
           --bs-btn-font-weight: 600;
           --bs-btn-color: var(--bs-white);
           --bs-btn-bg: var(--bd-violet-bg);
@@ -101,6 +103,7 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
           display: block !important;
         }
+
     </style>
 
 </head>
@@ -172,22 +175,23 @@
         </li>
     </ul>
 </div>
+<div class="dropdown position-fixed col-lg-12 header">
 
-<header data-bs-theme="dark">
-    {% include 'main/includes/inc_menu.html'%}
-</header>
+    <header data-bs-theme="dark">
+        {% include 'main/includes/inc_menu.html'%}
+    </header>
 
+</div>
 <main>
-
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Это пример</h1>
-                <h2 class="fw-light">интернет-магазина</h2>
-                <p class="lead text-body-secondary">Он может быть таким или совершенно другим.</p>
+                <h1 class="fw-light">Classifieds</h1>
+                <h2 class="fw-light">___________</h2>
+                <p class="lead text-body-secondary">bulletin board</p>
                 <p>
-                    <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Каталог</a>
-                    <a class="btn btn-secondary" href="{% url 'blog:blog_list' %}" role="button">Блог</a>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Catalog</a>
+                    <a class="btn btn-info" href="{% url 'blog:blog_list' %}" role="button">Blog</a>
                 </p>
             </div>
         </div>
@@ -197,39 +201,40 @@
     {% endblock %}
 </main>
 
+
 <footer class="pt-4 my-md-8 pt-md-5 border-top">
     <div class="container">
         <div class="row">
             <div class="col-6 col-md">
-                <h5>Категории</h5>
+                <h5>Category</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Первая</a></li>
-                    <li><a class="text-muted" href="#">Вторая</a></li>
-                    <li><a class="text-muted" href="#">Третья</a></li>
+                    <li><a class="text-muted" href="#">First</a></li>
+                    <li><a class="text-muted" href="#">Second</a></li>
+                    <li><a class="text-muted" href="#">Third</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
-                <h5>Дополнительно</h5>
+                <h5>Additionally</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="https://www.google.co.jp/">Пойти погуглить</a></li>
-                    <li><a class="text-muted" href="https://github.com/marceldio?tab=repositories">Мой Гитхаб</a>
+                    <li><a class="text-muted" href="https://www.google.co.jp/">Go look</a></li>
+                    <li><a class="text-muted" href="https://github.com/marceldio?tab=repositories">My github</a>
                     </li>
-                    <li><a class="text-muted" href="https://www.youtube.com/watch?v=LUF3FncYnzI">Перейти в YouTube</a>
+                    <li><a class="text-muted" href="https://www.youtube.com/watch?v=LUF3FncYnzI">Go to YouTube</a>
                     </li>
                 </ul>
             </div>
             <div class="col-6 col-md">
-                <h5>О нас</h5>
+                <h5>About</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="/contact/">Контакты</a></li>
+                    <li><a class="text-muted" href="/contact/">Contacts</a></li>
                 </ul>
             </div>
         </div>
         <div class="container">
             <p class="float-end mb-1">
-                <a href="#">Наверх</a>
+                <a href="#">Top</a>
             </p>
-            <p class="mb-1">My Store &copy; 2024</p>
+            <p class="mb-1">Classifieds &copy; 2024</p>
 
         </div>
     </div>

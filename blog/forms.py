@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-from catalog.models import Product, Version
 
+from blog.models import Blog, Version
 
 # class StyleForMixin:
 #     def __init__(self, *args, **kwargs):
@@ -10,17 +10,15 @@ from catalog.models import Product, Version
 #         for field_name, field in self.fields.items():
 #             field.widget.attrs['class'] = 'form-control'
 
-
-
-class ProductModeratorForm(ModelForm):
+class BlogModeratorForm(ModelForm):
     class Meta:
-        model = Product
-        fields = ('name', 'description', 'is_published')
+        model = Blog
+        fields = ('title', 'content', 'is_published')
 
 
-class ProductForm(forms.ModelForm):
+class BlogForm(forms.ModelForm):
     class Meta:
-        model = Product
+        model = Blog
         exclude = ('views_counter','owner', 'is_published')
 
     # Список запрещенных слов
@@ -29,15 +27,15 @@ class ProductForm(forms.ModelForm):
 
 
     def clean_name(self):
-        name = self.cleaned_data.get('name')
+        name = self.cleaned_data.get('title')
         if any(word in name.lower() for word in self.forbidden_words):
             raise forms.ValidationError('The title contains forbidden words.')
         return name
 
     def clean_description(self):
-        description = self.cleaned_data.get('description')
+        description = self.cleaned_data.get('content')
         if any(word in description.lower() for word in self.forbidden_words):
-            raise forms.ValidationError('The description contains forbidden words.')
+            raise forms.ValidationError('The content contains forbidden words.')
         return description
 
 

@@ -6,19 +6,19 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Профиль</h5>
+                    <h5 class="card-title">Profile</h5>
                 </div>
                 <div class="card-body">
                     {% csrf_token %}
                     {{ form.as_p }}
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Сохранить
+                    Save
                 </button>
             </div>
             <div class="card-footer">
                 <div class="d-grid col-12">
-                    <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Назад</a>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Home</a>
                 </div>
             </div>
         </div>

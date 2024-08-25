@@ -8,11 +8,11 @@ from catalog.models import Product, Category, Version
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
-        'id', 'product', 'price', 'category', 'created_at',
+        'id', 'name', 'price', 'category', 'created_at',
         'updated_at', 'is_published', 'view_counter')
     readonly_fields = ('created_at', 'updated_at', 'view_counter')
     list_filter = ('category', 'is_published', 'price')
-    search_fields = ('product', 'description')
+    search_fields = ('name', 'description')
 
 
 @admin.register(Category)

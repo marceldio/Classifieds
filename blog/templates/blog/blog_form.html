@@ -1,26 +1,54 @@
 {% extends 'main/index.html' %}
 {% block content %}
-<div class="container">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <form class="row" method="post" enctype="multipart/form-data">
-                    <div class="card">
-                        <div class="card-body">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            {% if object %}
-                            Сохранить
-                            {% else %}
-                            Создать
-                            {% endif %}
-                        </button>
+
+<div class="col-12">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        {% if object %}
+                        Edit
+                        {% else %}
+                        Create
+                        {% endif %}
+                    </h5>
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                     </div>
-                </form>
+                    <button type="submit" class="btn btn-primary">
+                        {% if object %}
+                        Save
+                        {% else %}
+                        Add
+                        {% endif %}
+                    </button>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'blog:blog_list' %}" class="btn btn-outline-secondary">Home</a>
+                </div>
             </div>
         </div>
-    </div>
+        {% if object %}
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Version</h5>
+                    <div class="card-body">
+                        {{ formset.management_form }}
+                        {% for form in formset.forms %}
+                        {{ form.as_p }}
+                        {% if not forloop.last %}
+                        <hr>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </form>
 </div>
 {% endblock %}
+

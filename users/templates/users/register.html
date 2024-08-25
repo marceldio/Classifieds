@@ -6,21 +6,21 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Регистрация</h5>
+                    <h5 class="card-title">Registration</h5>
                 </div>
                 <div class="card-body">
                     {% csrf_token %}
                     {{ form.as_p }}
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Зарегистрироваться
+                    Register
                 </button>
             </div>
             <div class="card-footer">
                 <div class="d-grid col-12">
                     <div class="btn-group">
-                        <a href="{% url 'users:login' %}" class="btn btn-outline-info">Вход</a>
-                        <a href="{% url 'users:reset_password' %}" class="btn btn-outline-info">Восстановить пароль</a>
+                        <a href="{% url 'users:login' %}" class="btn btn-outline-info">Enter</a>
+                        <a href="{% url 'users:reset_password' %}" class="btn btn-outline-info">Recovery password</a>
                     </div>
                 </div>
             </div>

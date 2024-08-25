@@ -8,22 +8,19 @@
                 <div class="card shadow-sm">
                     <img src="{{ product.image | media_filter }}">
                     <div class="card-body">
-                        <p class="card-text">Наименование: {{ object.product }}</p>
-                        <p class="card-text">Категория: {{ object.category }}</p>
-                        <p class="card-text">Описание: {{ object.description | slice:100 }}</p>
+                        <p class="card-text">Title: {{ object.name }}</p>
+                        <p class="card-text">Category: {{ object.category }}</p>
+                        <p class="card-text">Description: {{ object.description | slice:100 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
-
                             <div class="d-grid gap-2 d-md-block">
-
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" href="
-                                    {% url 'catalog:product_view' product.pk %}" role="button">Купить</a>
-                                    <a class="btn btn-secondary" href="
-                                    {% url 'catalog:product_list' %}" role="button">В каталог</a>
+                                <div class="card-footer">
+                                    <div class="btn btn-group">
+                                        <a href="{% url 'order:order' object.pk %}" type="button"
+                                           class="w-100 btn btn-outline-warning">Order</a>
+                                        <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-primary">Home</a>
+                                    </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>

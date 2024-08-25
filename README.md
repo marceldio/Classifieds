@@ -1,5 +1,6 @@
-django_my_project
+django
 
+"Classifieds"
 Создание интернет-магазина. 
 
 

@@ -7,19 +7,19 @@ NULLABLE = {'blank': True, 'null': True}
 class Category(models.Model):
     category = models.CharField(
         max_length=100,
-        verbose_name="Категория"
+        verbose_name="category"
     )
     description = models.TextField(
         **NULLABLE,
-        verbose_name="Описание"
+        verbose_name="description"
     )
 
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
-    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Обновлено")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="created at")
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="updated at")
 
     class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = "category"
+        verbose_name_plural = "categories"
         ordering = ["category", "description"]
 
     def __str__(self):
@@ -27,12 +27,13 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    product = models.CharField(
+    name = models.CharField(
         max_length=100,
-        verbose_name="Наименование"
+        verbose_name="name",
+        default="Ad"
     )
     description = models.TextField(
-        verbose_name="Описание",
+        verbose_name="description",
         **NULLABLE
     )
     slug = models.CharField(
@@ -42,55 +43,55 @@ class Product(models.Model):
     )
     image = models.ImageField(
         upload_to="catalog/image",
-        verbose_name="Изображение",
+        verbose_name="image",
         **NULLABLE
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
-        verbose_name="Категория",
+        verbose_name="category",
         **NULLABLE,
         related_name="products"
     )
-    price = models.PositiveIntegerField(verbose_name="Цена за покупку")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
-    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Обновлено")
-    is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
+    price = models.PositiveIntegerField(verbose_name="price")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="created At")
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name="updated At")
+    is_published = models.BooleanField(default=False, verbose_name="is_published")
     view_counter = models.PositiveIntegerField(
         default=0,
-        verbose_name="Счетчик просмотров",
+        verbose_name="counter views",
         editable=False
     )
     owner = models.ForeignKey(
-        User, verbose_name="Владелец",
-        help_text="Укажите владельца товара",
-        blank=True, null=True,
+        User, verbose_name="owner",
+        help_text="Please indicate the owner of the ad",
+        **NULLABLE,
         on_delete=models.SET_NULL
     )
 
     class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товары"
-        ordering = ["product", "description", "category", "price"]
+        verbose_name = "product"
+        verbose_name_plural = "products"
+        ordering = ["name", "description", "category", "price"]
         permissions = [
             ("can_edit_category", "Can edit category"),
             ("can_edit_description", "Can edit description"),
             ("can_edit_is_published", "Can edit is_published")]
 
     def __str__(self):
-        return f'{self.product}'
+        return f'{self.name}'
 
 
 class Version(models.Model):
-    title = models.CharField(max_length=150, verbose_name='название')
-    number = models.PositiveIntegerField(verbose_name='номер версии')
-    is_current = models.BooleanField(default=True, verbose_name='активная')
+    title = models.CharField(max_length=150, verbose_name='title')
+    number = models.PositiveIntegerField(verbose_name='version number')
+    is_current = models.BooleanField(default=False, verbose_name='is current')
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='товар')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='product')
 
     def __str__(self):
         return f'{self.title}'
 
     class Meta:
-        verbose_name = 'версия'
-        verbose_name_plural = 'версии'
+        verbose_name = 'version'
+        verbose_name_plural = 'versions'

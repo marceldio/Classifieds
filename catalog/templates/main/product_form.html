@@ -8,9 +8,9 @@
                 <div class="card-header">
                     <h5 class="card-title">
                         {% if object %}
-                        Редактировать товар
+                        Edit
                         {% else %}
-                        Создать товар
+                        Create
                         {% endif %}
                     </h5>
                     <div class="card-body">
@@ -19,14 +19,14 @@
                     </div>
                     <button type="submit" class="btn btn-primary">
                         {% if object %}
-                        Сохранить
+                        Save
                         {% else %}
-                        Создать
+                        Add
                         {% endif %}
                     </button>
                 </div>
                 <div class="card-footer">
-                    <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Назад</a>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">Home</a>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Версия</h5>
+                    <h5 class="card-title">Version</h5>
                     <div class="card-body">
                         {{ formset.management_form }}
                         {% for form in formset.forms %}

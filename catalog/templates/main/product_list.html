@@ -6,7 +6,7 @@
         <div class="col-12 mb-5">
             {% if user.is_authenticated %}
             <p>
-                <a class="btn btn-primary" href="{% url 'catalog:product_create' %}">Добавить товар</a>
+                <a class="btn btn-primary" href="{% url 'catalog:product_create' %}">Add on ad</a>
             </p>
             {% endif %}
         </div>
@@ -18,13 +18,13 @@
                     <div class="card-body">
                         <p class="card-text">
                             {% if object.is_published %}
-                            {{ object.product }}
+                            {{ object.name }}
                             {{ object.description | slice:100 }}
-                            версия: {{ object.version }}
+                            version: {{ object.version }}
 
                             {% else %}
                             <span class="badge bg-secondary text-white">
-                                {{ object.product }}
+                                {{ object.name }}
 
                             </span>
                             {% endif %}
@@ -34,13 +34,13 @@
                             <div class="btn-group">
                                 <p>
                                     <a class="btn btn-primary" href="{% url 'catalog:product_view' object.pk %}"
-                                       role="button">Перейти</a>
+                                       role="button">View</a>
                                 {% if perms.catalog.change_product and perms.catalog.delete_product or perms.catalog.can_edit_category and perms.catalog.can_edit_description and perms.catalog.can_edit_is_published or user == object.owner %}
 
                                     <a class="btn btn-warning" href="{% url 'catalog:product_edit' object.pk %}"
-                                       role="button">Редактировать</a>
+                                       role="button">Edit</a>
                                     <a class="btn btn-danger" href="{% url 'catalog:product_delete' object.pk %}"
-                                       role="button">Удалить</a>
+                                       role="button">Delete</a>
                                 </p>
                                 {% endif %}
 

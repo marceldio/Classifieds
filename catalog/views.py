@@ -34,7 +34,7 @@ class ProductCreateView(CreateView, LoginRequiredMixin):
         product.save()
         if form.is_valid():
             product = form.save()
-            product.slug = slugify(product.product)
+            product.slug = slugify(product.name)
             product.save()
         return super().form_valid(form)
 

@@ -6,7 +6,7 @@
         <div class="col-12 mb-5">
             {% if user.is_authenticated %}
             <p>
-                <a class="btn btn-primary" href="{% url 'blog:blog_create' %}">Добавить статью</a>
+                <a class="btn btn-primary" href="{% url 'blog:blog_create' %}">Add post</a>
             </p>
             {% endif %}
         </div>
@@ -32,15 +32,15 @@
                             <div class="btn-group">
                                 <p>
                                     <a class="btn btn-primary" href="{% url 'blog:blog_detail' object.pk %}"
-                                       role="button">Перейти</a>
+                                       role="button">View</a>
 
                                 {% if perms.blog.change_blog and perms.blog.delete_blog or user == object.owner %}
 
                                     <!-- Действие, если условия выполняются -->
                                     <a class="btn btn-warning" href="{% url 'blog:blog_edit' object.pk %}"
-                                       role="button">Редактировать</a>
+                                       role="button">Edit</a>
                                     <a class="btn btn-danger" href="{% url 'blog:blog_delete' object.pk %}"
-                                       role="button">Удалить</a>
+                                       role="button">Delete</a>
                                 </p>
                                 {% endif %}
                             </div>

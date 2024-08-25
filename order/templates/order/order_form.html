@@ -1,0 +1,20 @@
+{% extends 'main/index.html' %}
+{% block content %}
+<div class="container">
+    <div class="row col-12">
+        <div class="card mb-4 text-center">
+            <div class="card-header">Creating order</div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="w-50 btn btn-success">Leave a request</button>
+                </form>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'catalog:product_list' %}" class="w-50 btn btn-outline-secondary">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
